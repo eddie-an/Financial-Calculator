@@ -79,8 +79,6 @@ function SimpleInterest() {
             selectedId = "SimpleInterest-principal-field";
         }
 
-
-
         const fieldToRemove = document.getElementById(selectedId);
         fieldToRemove.setAttribute("disabled", "disabled"); // disable certain fields
     }

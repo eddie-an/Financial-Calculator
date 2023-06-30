@@ -11,6 +11,12 @@ function Layout() {
             <NavLink to="/compounding-interest">
                 <h6>Compounding Interest</h6>
             </NavLink>
+            <NavLink to="/uniform-series-annuities">
+                <h6>Uniform Series Annuities</h6>
+            </NavLink>
+            <NavLink to="/gradient-series-annuities">
+                <h6>Gradient Series Annuities</h6>
+            </NavLink>
             <Outlet/>
         </>
 
