@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SimpleInterest from "./components/SimpleInterest";
+import CompoundingInterest from "./components/CompoundingInterest";
+import Layout from "./components/Layout";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout/>}>
+          <Route path="/simple-interest" element={<SimpleInterest/>}/>
+          <Route path="/compounding-interest" element={<CompoundingInterest/>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
