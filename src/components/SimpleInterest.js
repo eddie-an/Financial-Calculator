@@ -29,6 +29,10 @@ function SimpleInterest() {
         calculation(mode);
     }
 
+    /**
+     * This method updates the 'answer' state variable by performing interest rate calculations
+     * @param {String} mode Specifies which variable the user wants to calculate
+     */
     const calculation = (mode) => {
         let ans;
         if (mode === "futureValue") {
@@ -56,9 +60,14 @@ function SimpleInterest() {
 
     }
 
-    const switchMode = (selectedMode) => { // function that runs when switching modes
-        const allFields = document.getElementsByClassName("SimpleInterest-fields");
-        for (let i=0; i<4; i++)
+    /**
+     * This method is run when switching modes by updating the 'mode' state variable.
+     * All input fields are cleared when this function is run.
+     * @param {String} selectedMode Specifies which variable the user wants to calculate
+     */
+    const switchMode = (selectedMode) => {
+        const allFields = document.getElementsByClassName("input-fields");
+        for (let i=0; i<allFields.length; i++)
         {
             allFields[i].removeAttribute("disabled"); // enable all fields initially
             allFields[i].value = ""; // clear all field values
@@ -73,22 +82,22 @@ function SimpleInterest() {
         let selectedId;
         if (selectedMode === "futureValue") {
             setMode("futureValue");
-            selectedId = "SimpleInterest-future-value-field";
+            selectedId = "future-value-field";
         }
 
         else if (selectedMode === "interestRate") {
             setMode("interestRate");
-            selectedId = "SimpleInterest-interest-rate-field";
+            selectedId = "interest-rate-field";
         }
 
         else if (selectedMode === "principal") {
             setMode("principal");
-            selectedId = "SimpleInterest-principal-field";
+            selectedId = "principal-field";
         }
         
         else if (selectedMode === "timePeriod") {
             setMode("timePeriod");
-            selectedId = "SimpleInterest-time-period-field";
+            selectedId = "time-period-field";
         }
 
         const fieldToRemove = document.getElementById(selectedId);
@@ -99,23 +108,25 @@ function SimpleInterest() {
         <>
             <h4>This is simple interest</h4>
 
-            <button onClick={()=>switchMode("futureValue")}>Future Value</button>
-            <button onClick={()=>switchMode("interestRate")}>Interest Rate</button>
+            <p>Calculate: </p>
             <button onClick={()=>switchMode("principal")}>Principal</button>
+            <button onClick={()=>switchMode("interestRate")}>Interest Rate</button>
             <button onClick={()=>switchMode("timePeriod")}>Time Period</button>
+            <button onClick={()=>switchMode("futureValue")}>Future Value</button>
+            
             <form onSubmit={ (e) => handleSubmit(e) }>
                 <br/>
+                <p>Principal</p>
+                <input type="number" className="input-fields" id="principal-field" onChange={handlePrincipal} min='0' step="0.01" required/>
+
                 <p>Interest Rate (in percentage)</p>
-                <input type="number" className="SimpleInterest-fields" id="SimpleInterest-interest-rate-field" onChange={handleInterestRate} step="any" required/>
+                <input type="number" className="input-fields" id="interest-rate-field" onChange={handleInterestRate} step="any" required/>
 
                 <p>Time Period (years)</p>
-                <input type="number" className="SimpleInterest-fields" id="SimpleInterest-time-period-field" onChange={handleTimePeriod} min='0' step="1" required/>
-
-                <p>Principal</p>
-                <input type="number" className="SimpleInterest-fields" id="SimpleInterest-principal-field" onChange={handlePrincipal} min='0' step="0.01" required/>
-
+                <input type="number" className="input-fields" id="time-period-field" onChange={handleTimePeriod} min='0' step="1" required/>
+ 
                 <p>Future Value</p>
-                <input type="number" className="SimpleInterest-fields" id="SimpleInterest-future-value-field" onChange={handleFutureValue} min='0' step="0.01" disabled required/>
+                <input type="number" className="input-fields" id="future-value-field" onChange={handleFutureValue} min='0' step="0.01" disabled required/>
 
                 <div className='submit-button-container'>
                     <input type="submit" id='submit-button' value="Calculate" />
