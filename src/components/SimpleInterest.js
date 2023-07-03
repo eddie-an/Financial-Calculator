@@ -67,16 +67,22 @@ function SimpleInterest() {
      */
     const switchMode = (selectedMode) => {
         const allFields = document.getElementsByClassName("input-fields");
-        const allLabels = document.getElementsByClassName("input-labels");
         for (let i=0; i<allFields.length; i++)
         {
-            allFields[i].removeAttribute("disabled"); // enable all fields initially
-            allFields[i].classList.remove("hidden");
+            allFields[i].removeAttribute("disabled");
             allFields[i].value = ""; // clear all field values
         }
-        for (let i=0; i<allLabels.length; i++)
+
+        const allContainers = document.getElementsByClassName("input-container");
+        for (let i=0; i<allContainers.length; i++)
         {
-            allLabels[i].classList.remove("hidden");
+            allContainers[i].classList.remove("hidden");
+        }
+
+        const modeButtons = document.getElementsByClassName("mode-buttons");
+        for (let i=0; i<modeButtons.length; i++)
+        {
+            modeButtons[i].classList.remove("active-mode");
         }
 
         setInterestRate(0); // reset all state variables
@@ -106,11 +112,12 @@ function SimpleInterest() {
             selectedId = "time-period";
         }
 
-        const fieldToRemove = document.getElementById(`${selectedId}-field`);
-        const labelToRemove = document.getElementById(`${selectedId}-label`);
-        fieldToRemove.setAttribute("disabled", "disabled"); // disable certain fields
-        fieldToRemove.classList.add("hidden");
-        labelToRemove.classList.add("hidden");
+        const itemToRemove = document.getElementById(`${selectedId}-container`);
+        const fieldToDisable = document.getElementById(`${selectedId}-field`)
+        const buttonToHighLight = document.getElementById(`${selectedId}-mode-button`);
+        itemToRemove.classList.add("hidden");
+        buttonToHighLight.classList.add("active-mode");
+        fieldToDisable.setAttribute("disabled", "disabled");
     }
 
     return (
@@ -119,29 +126,29 @@ function SimpleInterest() {
 
             <p>Calculate: </p>
             <div className="mode-button-container">
-                <button onClick={()=>switchMode("principal")}>Principal</button>
-                <button onClick={()=>switchMode("interestRate")}>Interest Rate</button>
-                <button onClick={()=>switchMode("timePeriod")}>Time Period</button>
-                <button onClick={()=>switchMode("futureValue")}>Future Value</button>
+                <button className="mode-buttons" id="principal-mode-button" onClick={()=>switchMode("principal")}>Principal</button>
+                <button className="mode-buttons" id="interest-rate-mode-button" onClick={()=>switchMode("interestRate")}>Interest Rate</button>
+                <button className="mode-buttons" id="time-period-mode-button" onClick={()=>switchMode("timePeriod")}>Time Period</button>
+                <button className="mode-buttons active-mode" id="future-value-mode-button" onClick={()=>switchMode("futureValue")}>Future Value</button>
             </div>
             <div className="form">
             <form onSubmit={ (e) => handleSubmit(e) }>
                 <br/>
-                <div className="input-container principal-container">
+                <div className="input-container" id="principal-container">
                     <label htmlFor="principal-field" className="input-labels" id="principal-label">Principal</label>
                     <input type="number" className="input-fields" id="principal-field" onChange={handlePrincipal} min='0' step="0.01" required/>
                 </div>
-                <div className="input-container interest-rate-container">
-                    <label htmlFor="interest-rate-field" className="input-labels" id="interest-rate-label">Interest Rate (in percentage)</label>
+                <div className="input-container" id="interest-rate-container">
+                    <label htmlFor="interest-rate-field" className="input-labels" id="interest-rate-label">Interest Rate (%)</label>
                     <input type="number" className="input-fields" id="interest-rate-field" onChange={handleInterestRate} step="any" required/>
                 </div>
-                <div className="input-container time-period-container">
+                <div className="input-container" id="time-period-container">
                     <label htmlFor="time-period-field" className="input-labels" id="time-period-label">Time Period (years)</label>
                     <input type="number" className="input-fields" id="time-period-field" onChange={handleTimePeriod} min='0' step="1" required/>
                 </div>
-                <div className="input-container future-value-container">
-                    <label htmlFor="future-value-field" className="input-labels hidden" id="future-value-label">Future Value</label>
-                    <input type="number" className="input-fields hidden" id="future-value-field" onChange={handleFutureValue} min='0' step="0.01" disabled required/>
+                <div className="input-container hidden" id="future-value-container">
+                    <label htmlFor="future-value-field" className="input-labels" id="future-value-label">Future Value</label>
+                    <input type="number" className="input-fields" id="future-value-field" onChange={handleFutureValue} min='0' step="0.01" disabled required/>
                 </div>
                 <div className='submit-button-container'>
                     <input type="submit" id='submit-button' value="Calculate" />
