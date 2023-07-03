@@ -151,11 +151,14 @@ function CompoundingInterest() {
             <h4>This is compounding interest</h4>
 
             <p>Calculate: </p>
-            <button onClick={()=>switchMode("principal")}>Principal</button>
-            <button onClick={()=>switchMode("interestRate")}>Annual Percentage Rate</button>
-            <button onClick={()=>switchMode("timePeriod")}>Time Period</button>
-            <button onClick={()=>switchMode("futureValue")}>Future Value</button>
+            <div className="mode-button-container">
+                <button onClick={()=>switchMode("principal")}>Principal</button>
+                <button onClick={()=>switchMode("interestRate")}>Annual Percentage Rate</button>
+                <button onClick={()=>switchMode("timePeriod")}>Time Period</button>
+                <button onClick={()=>switchMode("futureValue")}>Future Value</button>
+            </div>
 
+            <div className="form">
             <form onSubmit={ (e) => handleSubmit(e) }>
                 <br/>
                 <label htmlFor="principal-field" className="input-labels" id="principal-label">Principal</label>
@@ -195,6 +198,7 @@ function CompoundingInterest() {
                     <input type="submit" id='submit-button' value="Calculate" />
                 </div>
             </form>
+            </div>
 
             <div className="answer">
                 <h3>{answer}</h3>

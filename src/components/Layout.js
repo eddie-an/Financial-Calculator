@@ -20,7 +20,9 @@ function Layout() {
             </NavLink>
             </div>
 
-            <Outlet/>
+            <div className="wrapper">
+                <Outlet/>
+            </div>
         </>
 
     );

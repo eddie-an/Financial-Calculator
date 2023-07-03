@@ -118,30 +118,36 @@ function SimpleInterest() {
             <h4>This is simple interest</h4>
 
             <p>Calculate: </p>
-            <button onClick={()=>switchMode("principal")}>Principal</button>
-            <button onClick={()=>switchMode("interestRate")}>Interest Rate</button>
-            <button onClick={()=>switchMode("timePeriod")}>Time Period</button>
-            <button onClick={()=>switchMode("futureValue")}>Future Value</button>
-            
+            <div className="mode-button-container">
+                <button onClick={()=>switchMode("principal")}>Principal</button>
+                <button onClick={()=>switchMode("interestRate")}>Interest Rate</button>
+                <button onClick={()=>switchMode("timePeriod")}>Time Period</button>
+                <button onClick={()=>switchMode("futureValue")}>Future Value</button>
+            </div>
+            <div className="form">
             <form onSubmit={ (e) => handleSubmit(e) }>
                 <br/>
-                <label htmlFor="principal-field" className="input-labels" id="principal-label">Principal</label>
-                <input type="number" className="input-fields" id="principal-field" onChange={handlePrincipal} min='0' step="0.01" required/>
-                <br/>
-                <label htmlFor="interest-rate-field" className="input-labels" id="interest-rate-label">Interest Rate (in percentage)</label>
-                <input type="number" className="input-fields" id="interest-rate-field" onChange={handleInterestRate} step="any" required/>
-                <br/>
-                <label htmlFor="time-period-field" className="input-labels" id="time-period-label">Time Period (years)</label>
-                <input type="number" className="input-fields" id="time-period-field" onChange={handleTimePeriod} min='0' step="1" required/>
-                <br/>
-                <label htmlFor="future-value-field" className="input-labels hidden" id="future-value-label">Future Value</label>
-                <input type="number" className="input-fields hidden" id="future-value-field" onChange={handleFutureValue} min='0' step="0.01" disabled required/>
-
+                <div className="input-container principal-container">
+                    <label htmlFor="principal-field" className="input-labels" id="principal-label">Principal</label>
+                    <input type="number" className="input-fields" id="principal-field" onChange={handlePrincipal} min='0' step="0.01" required/>
+                </div>
+                <div className="input-container interest-rate-container">
+                    <label htmlFor="interest-rate-field" className="input-labels" id="interest-rate-label">Interest Rate (in percentage)</label>
+                    <input type="number" className="input-fields" id="interest-rate-field" onChange={handleInterestRate} step="any" required/>
+                </div>
+                <div className="input-container time-period-container">
+                    <label htmlFor="time-period-field" className="input-labels" id="time-period-label">Time Period (years)</label>
+                    <input type="number" className="input-fields" id="time-period-field" onChange={handleTimePeriod} min='0' step="1" required/>
+                </div>
+                <div className="input-container future-value-container">
+                    <label htmlFor="future-value-field" className="input-labels hidden" id="future-value-label">Future Value</label>
+                    <input type="number" className="input-fields hidden" id="future-value-field" onChange={handleFutureValue} min='0' step="0.01" disabled required/>
+                </div>
                 <div className='submit-button-container'>
                     <input type="submit" id='submit-button' value="Calculate" />
                 </div>
-
             </form>
+            </div>
 
             <div className="answer">
                 <h3>{answer}</h3>

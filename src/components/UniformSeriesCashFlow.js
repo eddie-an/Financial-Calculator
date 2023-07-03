@@ -206,11 +206,13 @@ function UniformSeriesCashFlow() {
             <h4>This is uniform series cash flow</h4>
 
             <p>Calculate: </p>
-            <button onClick={()=>switchMode("principal")}>Principal</button>
-            <button onClick={()=>switchMode("cashFlowGivenPrincipal")}>Cash Flow Given Principal</button>
-            <button onClick={()=>switchMode("cashFlowGivenFutureValue")}>Cash Flow Given Future Value</button>
-            <button onClick={()=>switchMode("futureValue")}>Future Value</button>
-
+            <div className="mode-button-container">
+                <button onClick={()=>switchMode("cashFlowGivenPrincipal")}>Cash Flow Given Principal</button>
+                <button onClick={()=>switchMode("cashFlowGivenFutureValue")}>Cash Flow Given Future Value</button>
+                <button onClick={()=>switchMode("principal")}>Principal</button>
+                <button onClick={()=>switchMode("futureValue")}>Future Value</button>
+            </div>
+            <div className="form">
             <form onSubmit={ (e) => handleSubmit(e) }>
                 <br/>
                 <label htmlFor="principal-field" className="input-labels" id="principal-label">Principal</label>
@@ -280,6 +282,7 @@ function UniformSeriesCashFlow() {
                     <input type="submit" id='submit-button' value="Calculate" />
                 </div>
             </form>
+            </div>
 
             <div className="answer">
                 <h3>{answer}</h3>

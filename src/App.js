@@ -11,10 +11,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout/>}>
-          <Route path="/simple-interest" element={<SimpleInterest/>}/>
-          <Route path="/compounding-interest" element={<CompoundingInterest/>}/>
-          <Route path="/uniform-series-cash-flow" element={<UniformSeriesCashFlow/>}/>
-          <Route path="/gradient-series-cash-flow" element={<GradientSeriesCashFlow/>}/>
+            <Route path="/simple-interest" element={<SimpleInterest/>}/>
+            <Route path="/compounding-interest" element={<CompoundingInterest/>}/>
+            <Route path="/uniform-series-cash-flow" element={<UniformSeriesCashFlow/>}/>
+            <Route path="/gradient-series-cash-flow" element={<GradientSeriesCashFlow/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
