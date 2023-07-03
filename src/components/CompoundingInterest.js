@@ -94,10 +94,16 @@ function CompoundingInterest() {
      */
     const switchMode = (selectedMode) => { // function that runs when switching modes
         const allFields = document.getElementsByClassName("input-fields");
+        const allLabels = document.getElementsByClassName("input-labels");
         for (let i=0; i<allFields.length; i++)
         {
             allFields[i].removeAttribute("disabled"); // enable all fields initially
             allFields[i].value = ""; // clear all field values
+            allFields[i].classList.remove("hidden");
+        }
+        for (let i=0; i<allLabels.length; i++)
+        {
+            allLabels[i].classList.remove("hidden");
         }
 
         const allRadioButtons = document.getElementsByName("compounding-period");
@@ -116,26 +122,28 @@ function CompoundingInterest() {
         let selectedId;
         if (selectedMode === "futureValue") {
             setMode("futureValue");
-            selectedId = "future-value-field";
+            selectedId = "future-value";
         }
 
         else if (selectedMode === "interestRate") {
             setMode("interestRate");
-            selectedId = "interest-rate-field";
+            selectedId = "interest-rate";
         }
 
         else if (selectedMode === "principal") {
             setMode("principal");
-            selectedId = "principal-field";
+            selectedId = "principal";
         }
         
         else if (selectedMode === "timePeriod") {
             setMode("timePeriod");
-            selectedId = "time-period-field";
+            selectedId = "time-period";
         }
-
-        const fieldToRemove = document.getElementById(selectedId);
+        const fieldToRemove = document.getElementById(`${selectedId}-field`);
+        const labelToRemove = document.getElementById(`${selectedId}-label`);
         fieldToRemove.setAttribute("disabled", "disabled"); // disable certain fields
+        fieldToRemove.classList.add("hidden");
+        labelToRemove.classList.add("hidden");
     }
 
     return (
@@ -150,13 +158,13 @@ function CompoundingInterest() {
 
             <form onSubmit={ (e) => handleSubmit(e) }>
                 <br/>
-                <p>Principal</p>
+                <label htmlFor="principal-field" className="input-labels" id="principal-label">Principal</label>
                 <input type="number" className="input-fields" id="principal-field" onChange={handlePrincipal} min='0' step="0.01" required/>
-
-                <p>Annual Percentage Rate (in percentage)</p>
+                <br/>
+                <label htmlFor="interest-rate-field" className="input-labels" id="interest-rate-label">Annual Percentage Rate (in percentage)</label>
                 <input type="number" className="input-fields" id="interest-rate-field" onChange={handleInterestRate} step="any" required/>
-
-                <p>Compounding Period</p>
+                <br/>
+                <p className="input-labels" id="compounding-period-label">Compounding Period</p>
                 <input type="radio" id="compounding-annually" name="compounding-period" onClick={()=> setCompoundingPeriod("annually")} required></input>
                 <label htmlFor="compounding-annually">Annually</label>
                 <input type="radio" id="compounding-semi-annually" name="compounding-period" onClick={()=> setCompoundingPeriod("semi-annually")} required></input>
@@ -176,12 +184,12 @@ function CompoundingInterest() {
                 <input type="radio" id="compounding-continuously" name="compounding-period" onClick={()=> setCompoundingPeriod("continuously")} required></input>
                 <label htmlFor="compounding-continuously">Continuously</label>
                 
-                <br></br>
-                <p>Time Period (years)</p>
+                <br/>
+                <label htmlFor="time-period-field" className="input-labels" id="time-period-label">Time Period (years)</label>
                 <input type="number" className="input-fields" id="time-period-field" onChange={handleTimePeriod} min='0' step="1" required/>
-                
-                <p>Future Value</p>
-                <input type="number" className="input-fields" id="future-value-field" onChange={handleFutureValue} min='0' step="0.01" disabled required/>
+                <br/>
+                <label htmlFor="future-value-field" className="input-labels hidden" id="future-value-label">Future Value</label>
+                <input type="number" className="input-fields hidden" id="future-value-field" onChange={handleFutureValue} min='0' step="0.01" disabled required/>
 
                 <div className='submit-button-container'>
                     <input type="submit" id='submit-button' value="Calculate" />

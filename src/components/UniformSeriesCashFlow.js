@@ -123,10 +123,17 @@ function UniformSeriesCashFlow() {
      */
     const switchMode = (selectedMode) => { // function that runs when switching modes
         const allFields = document.getElementsByClassName("input-fields");
+        const allLabels = document.getElementsByClassName("input-labels");
         for (let i=0; i<allFields.length; i++)
         {
             allFields[i].removeAttribute("disabled"); // enable all fields initially
             allFields[i].value = ""; // clear all field values
+            allFields[i].classList.remove("hidden");
+        }
+
+        for (let i=0; i<allLabels.length; i++)
+        {
+            allLabels[i].classList.remove("hidden");
         }
 
         const compoundingPeriodButtons = document.getElementsByName("compounding-period");
@@ -160,30 +167,38 @@ function UniformSeriesCashFlow() {
         let selectedId1, selectedId2;
         if (selectedMode === "futureValue") {
             setMode("futureValue");
-            selectedId1 = "future-value-field";
-            selectedId2 = "principal-field"
+            selectedId1 = "future-value";
+            selectedId2 = "principal"
         }
 
         else if (selectedMode === "principal") {
             setMode("principal");
-            selectedId1 = "principal-field";
-            selectedId2 = "future-value-field";
+            selectedId1 = "principal";
+            selectedId2 = "future-value";
         }
         
         else if (selectedMode === "cashFlowGivenPrincipal") {
             setMode("cashFlowGivenPrincipal");
-            selectedId1 = "cash-flow-field"
-            selectedId2 = "future-value-field";
+            selectedId1 = "cash-flow"
+            selectedId2 = "future-value";
         }
         else if (selectedMode === "cashFlowGivenFutureValue") {
             setMode("cashFlowGivenFutureValue");
-            selectedId1 = "cash-flow-field"
-            selectedId2 = "principal-field";
+            selectedId1 = "cash-flow"
+            selectedId2 = "principal";
         }
-        const fieldToRemove1 = document.getElementById(selectedId1);
-        const fieldToRemove2 = document.getElementById(selectedId2);
-        fieldToRemove1.setAttribute("disabled", "disabled");
+
+        const fieldToRemove1 = document.getElementById(`${selectedId1}-field`);
+        const labelToRemove1 = document.getElementById(`${selectedId1}-label`);
+        fieldToRemove1.setAttribute("disabled", "disabled"); // disable certain fields
+        fieldToRemove1.classList.add("hidden");
+        labelToRemove1.classList.add("hidden");
+
+        const fieldToRemove2 = document.getElementById(`${selectedId2}-field`);
+        const labelToRemove2 = document.getElementById(`${selectedId2}-label`);
         fieldToRemove2.setAttribute("disabled", "disabled"); // disable certain fields
+        fieldToRemove2.classList.add("hidden");
+        labelToRemove2.classList.add("hidden");
     }
 
     return (
@@ -198,13 +213,15 @@ function UniformSeriesCashFlow() {
 
             <form onSubmit={ (e) => handleSubmit(e) }>
                 <br/>
-                <p>Principal</p>
+                <label htmlFor="principal-field" className="input-labels" id="principal-label">Principal</label>
                 <input type="number" className="input-fields" id="principal-field" onChange={handlePrincipal} min='0' step="0.01" required/>
 
-                <p>Annual Percentage Rate (in percentage)</p>
+                <br/>
+
+                <label htmlFor="interest-rate-field" className="input-labels" id="interest-rate-label">Annual Percentage Rate (in percentage)</label>
                 <input type="number" className="input-fields" id="interest-rate-field" onChange={handleInterestRate} step="any" required/>
 
-                <p>Compounding Period</p>
+                <p className="input-labels" id="compounding-period-label">Compounding Period</p>
                 <input type="radio" id="compounding-annually" name="compounding-period" onClick={()=> setCompoundingPeriod("annually")} required></input>
                 <label htmlFor="compounding-annually">Annually</label>
                 <input type="radio" id="compounding-semi-annually" name="compounding-period" onClick={()=> setCompoundingPeriod("semi-annually")} required></input>
@@ -224,14 +241,14 @@ function UniformSeriesCashFlow() {
                 <input type="radio" id="compounding-continuously" name="compounding-period" onClick={()=> setCompoundingPeriod("continuously")} required></input>
                 <label htmlFor="compounding-continuously">Continuously</label>
                 
-                <br></br>
-                <p>Time Period (years)</p>
+                <br/>
+                <label htmlFor="time-period-field" className="input-labels" id="time-period-label">Time Period (years)</label>
                 <input type="number" className="input-fields" id="time-period-field" onChange={handleTimePeriod} min='0' step="1" required/>
-                
-                <p>Cash Flow (payment or deposit)</p>
-                <input type="number" className="input-fields" id="cash-flow-field" onChange={handleCashFlow} min='0' step="0.01" required/>
+                <br/>
+                <label htmlFor="cash-flow-field" className="input-labels hidden" id="cash-flow-label">Cash Flow (payment or deposit)</label>
+                <input type="number" className="input-fields hidden" id="cash-flow-field" onChange={handleCashFlow} min='0' step="0.01" required/>
 
-                <p>Payment/Deposit Period</p>
+                <p className="input-labels" id="payment-period-label">Payment/Deposit Period</p>
                 <input type="radio" id="paid-annually" name="payment-period" onClick={()=> setPaymentPeriod("annually")} required></input>
                 <label htmlFor="paid-annually">Annually</label>
                 <input type="radio" id="paid-semi-annually" name="payment-period" onClick={()=> setPaymentPeriod("semi-annually")} required></input>
@@ -249,13 +266,15 @@ function UniformSeriesCashFlow() {
                 <input type="radio" id="paid-daily" name="payment-period" onClick={()=> setPaymentPeriod("daily")} required></input>
                 <label htmlFor="paid-daily">Daily</label>
 
-                <p>Paid/Deposited at the</p>
+                <p className="input-labels" id="payment-timing-label">Paid/Deposited at the</p>
                 <input type="radio" id="paid-at-beginning" name="payment-timing" onClick={()=> setEndOfPeriodPay(false)} required></input>
                 <label htmlFor="paid-at-beginning">Beginning of each period</label>
                 <input type="radio" id="paid-at-end" name="payment-timing" onClick={()=> setEndOfPeriodPay(true)} required></input>
                 <label htmlFor="paid-at-end">End of each period</label>
-                <p>Future Value</p>
-                <input type="number" className="input-fields" id="future-value-field" onChange={handleFutureValue} min='0' step="0.01" disabled required/>
+
+                <br/>
+                <label htmlFor="future-value-field" className="input-labels hidden" id="future-value-label">Future Value</label>
+                <input type="number" className="input-fields hidden" id="future-value-field" onChange={handleFutureValue} min='0' step="0.01" disabled required/>
 
                 <div className='submit-button-container'>
                     <input type="submit" id='submit-button' value="Calculate" />

@@ -67,10 +67,16 @@ function SimpleInterest() {
      */
     const switchMode = (selectedMode) => {
         const allFields = document.getElementsByClassName("input-fields");
+        const allLabels = document.getElementsByClassName("input-labels");
         for (let i=0; i<allFields.length; i++)
         {
             allFields[i].removeAttribute("disabled"); // enable all fields initially
+            allFields[i].classList.remove("hidden");
             allFields[i].value = ""; // clear all field values
+        }
+        for (let i=0; i<allLabels.length; i++)
+        {
+            allLabels[i].classList.remove("hidden");
         }
 
         setInterestRate(0); // reset all state variables
@@ -82,26 +88,29 @@ function SimpleInterest() {
         let selectedId;
         if (selectedMode === "futureValue") {
             setMode("futureValue");
-            selectedId = "future-value-field";
+            selectedId = "future-value";
         }
 
         else if (selectedMode === "interestRate") {
             setMode("interestRate");
-            selectedId = "interest-rate-field";
+            selectedId = "interest-rate";
         }
 
         else if (selectedMode === "principal") {
             setMode("principal");
-            selectedId = "principal-field";
+            selectedId = "principal";
         }
         
         else if (selectedMode === "timePeriod") {
             setMode("timePeriod");
-            selectedId = "time-period-field";
+            selectedId = "time-period";
         }
 
-        const fieldToRemove = document.getElementById(selectedId);
+        const fieldToRemove = document.getElementById(`${selectedId}-field`);
+        const labelToRemove = document.getElementById(`${selectedId}-label`);
         fieldToRemove.setAttribute("disabled", "disabled"); // disable certain fields
+        fieldToRemove.classList.add("hidden");
+        labelToRemove.classList.add("hidden");
     }
 
     return (
@@ -116,17 +125,17 @@ function SimpleInterest() {
             
             <form onSubmit={ (e) => handleSubmit(e) }>
                 <br/>
-                <p>Principal</p>
+                <label htmlFor="principal-field" className="input-labels" id="principal-label">Principal</label>
                 <input type="number" className="input-fields" id="principal-field" onChange={handlePrincipal} min='0' step="0.01" required/>
-
-                <p>Interest Rate (in percentage)</p>
+                <br/>
+                <label htmlFor="interest-rate-field" className="input-labels" id="interest-rate-label">Interest Rate (in percentage)</label>
                 <input type="number" className="input-fields" id="interest-rate-field" onChange={handleInterestRate} step="any" required/>
-
-                <p>Time Period (years)</p>
+                <br/>
+                <label htmlFor="time-period-field" className="input-labels" id="time-period-label">Time Period (years)</label>
                 <input type="number" className="input-fields" id="time-period-field" onChange={handleTimePeriod} min='0' step="1" required/>
- 
-                <p>Future Value</p>
-                <input type="number" className="input-fields" id="future-value-field" onChange={handleFutureValue} min='0' step="0.01" disabled required/>
+                <br/>
+                <label htmlFor="future-value-field" className="input-labels hidden" id="future-value-label">Future Value</label>
+                <input type="number" className="input-fields hidden" id="future-value-field" onChange={handleFutureValue} min='0' step="0.01" disabled required/>
 
                 <div className='submit-button-container'>
                     <input type="submit" id='submit-button' value="Calculate" />
