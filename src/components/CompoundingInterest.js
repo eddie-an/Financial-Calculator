@@ -28,6 +28,8 @@ function CompoundingInterest({ RadioButton }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         calculation(mode);
+        const answerContainer = document.getElementById("answer-container");
+        answerContainer.classList.remove("hidden");
     }
 
     /**
@@ -63,26 +65,31 @@ function CompoundingInterest({ RadioButton }) {
         if (mode === "futureValue") {
             const multiplicationFactor = (1 + effectiveAnnualRate) ** timePeriod;
             ans = principal * multiplicationFactor;
+            ans = ans.toFixed(2);
         }
         else if (mode === "interestRate" && compoundingPeriod !== "continuously") {
             const ear = ((futureValue/principal) ** (1/timePeriod)) - 1;
             const m = numberOfCompoundingPeriods[compoundingPeriod];
             const multiplicationFactor = ((ear + 1) ** (1/m)) - 1;
             ans = m * multiplicationFactor * 100;
+            ans = ans.toFixed(6);
         }
         else if (mode === "interestRate" && compoundingPeriod === "continuously") {
             const ear = ((futureValue/principal) ** (1/timePeriod)) - 1;
             ans = Math.log(1 + ear) * 100;
+            ans = ans.toFixed(6);
         }
 
         else if (mode === "principal") {
             const divisionFactor = (1 + effectiveAnnualRate) ** timePeriod;
             ans = futureValue / divisionFactor;
+            ans = ans.toFixed(2);
         }
         else if (mode === "timePeriod") {
             const numerator = Math.log(futureValue/principal);
             const denominator = Math.log(1 + effectiveAnnualRate);
             ans = numerator / denominator;
+            ans = ans.toFixed(6);
         }
         setAnswer(ans);
     }
@@ -117,6 +124,8 @@ function CompoundingInterest({ RadioButton }) {
         {
             modeButtons[i].classList.remove("active-mode");
         }
+        const answerContainer = document.getElementById("answer-container");
+        answerContainer.classList.add("hidden");
 
         setInterestRate(0); // reset all state variables
         setTimePeriod(0);
@@ -205,8 +214,27 @@ function CompoundingInterest({ RadioButton }) {
                 </form>
             </div>
 
-            <div className="answer-container">
-                <h3>{answer}</h3>
+            <div id="answer-container" className="hidden">
+                {
+                    mode === "futureValue" ?
+                    <h3>The future value will be ${answer}</h3> :
+                    <></>
+                }
+                {
+                    mode === "principal" ?
+                    <h3>The principal is ${answer}</h3> :
+                    <></>
+                }
+                {
+                    mode === "interestRate" ?
+                    <h3>The interest rate is {answer}%</h3> :
+                    <></>
+                }
+                {
+                    mode === "timePeriod" ?
+                    <h3>The time period is {answer} years</h3> :
+                    <></>
+                }
             </div>
         </>
 

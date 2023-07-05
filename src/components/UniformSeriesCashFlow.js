@@ -35,6 +35,8 @@ function UniformSeriesCashFlow({ RadioButton }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         calculation(mode);
+        const answerContainer = document.getElementById("answer-container");
+        answerContainer.classList.remove("hidden");
     }
 
     /**
@@ -113,7 +115,7 @@ function UniformSeriesCashFlow({ RadioButton }) {
             }
         }
 
-        setAnswer(ans);
+        setAnswer(ans.toFixed(2));
     }
 
     /**
@@ -158,6 +160,8 @@ function UniformSeriesCashFlow({ RadioButton }) {
         {
             modeButtons[i].classList.remove("active-mode");
         }
+        const answerContainer = document.getElementById("answer-container");
+        answerContainer.classList.add("hidden");
 
         setInterestRate(0); // reset all state variables
         setTimePeriod(0);
@@ -285,8 +289,22 @@ function UniformSeriesCashFlow({ RadioButton }) {
             </form>
             </div>
 
-            <div className="answer-container">
-                <h3>{answer}</h3>
+            <div id="answer-container" className="hidden">
+                {
+                    mode === "cashFlowGivenPrincipal" | mode === "cashFlowGivenFutureValue" ?
+                    <h3>The cash flow is ${answer}</h3> :
+                    <></>
+                }
+                {
+                    mode === "futureValue" ?
+                    <h3>The future value will be ${answer}</h3> :
+                    <></>
+                }
+                {
+                    mode === "principal" ?
+                    <h3>The principal is ${answer}</h3> :
+                    <></>
+                }
             </div>
         </>
 

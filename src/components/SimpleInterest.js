@@ -27,6 +27,8 @@ function SimpleInterest() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         calculation(mode);
+        const answerContainer = document.getElementById("answer-container");
+        answerContainer.classList.remove("hidden");
     }
 
     /**
@@ -39,22 +41,26 @@ function SimpleInterest() {
             const decimalInterestRate = interestRate / 100;
             const multiplicationFactor = 1 + (timePeriod * decimalInterestRate);
             ans = principal * multiplicationFactor;
+            ans = ans.toFixed(2);
         }
         else if (mode === "interestRate") {
             const numerator = futureValue - principal;
             const denominator = principal * timePeriod;
             ans = (numerator / denominator ) * 100;
+            ans = ans.toFixed(6);
         }
 
         else if (mode === "principal") {
             const decimalInterestRate = interestRate / 100;
             const divisionFactor = 1 + (timePeriod * decimalInterestRate);
             ans = futureValue / divisionFactor;
+            ans = ans.toFixed(2);
         }
         else if (mode === "timePeriod") {
             const numerator = futureValue - principal;
             const denominator = principal * interestRate;
             ans = (numerator / denominator ) * 100;
+            ans = ans.toFixed(6);
         }
         setAnswer(ans);
 
@@ -84,6 +90,10 @@ function SimpleInterest() {
         {
             modeButtons[i].classList.remove("active-mode");
         }
+
+        const answerContainer = document.getElementById("answer-container");
+        answerContainer.classList.add("hidden");
+
 
         setInterestRate(0); // reset all state variables
         setTimePeriod(0);
@@ -156,8 +166,27 @@ function SimpleInterest() {
             </form>
             </div>
 
-            <div className="answer-container">
-                <h3>{answer}</h3>
+            <div id="answer-container" className="hidden">
+                {
+                    mode === "futureValue" ?
+                    <h3>The future value will be ${answer}</h3> :
+                    <></>
+                }
+                {
+                    mode === "principal" ?
+                    <h3>The principal is ${answer}</h3> :
+                    <></>
+                }
+                {
+                    mode === "interestRate" ?
+                    <h3>The interest rate is {answer}%</h3> :
+                    <></>
+                }
+                {
+                    mode === "timePeriod" ?
+                    <h3>The time period is {answer} years</h3> :
+                    <></>
+                }
             </div>
 
         </>
