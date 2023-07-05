@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f6fdfd;
 }
 
 code {
@@ -12,57 +13,85 @@ code {
     monospace;
 }
 
-.navigation-bar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
+
 
 .hidden {
   display: none !important;
 }
 
+
 .wrapper {
   margin-inline: auto;
-  width: 650px;
-  border: 3px solid lime;
+  width: 700px;
+  padding-top: 20px;
+}
+
+.navigation-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #167e70;
+  border-bottom: 3px solid #192e31;
+}
+
+.title-container {
+  text-align: center;
+}
+
+.navigation-title {
+  color: #192e31;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #167e70;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.mode-prompt {
+  font-size: 16px;
+  font-weight: 600;
+  font-style: oblique;
+  color: #020908;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .mode-button-container {
   width: 100%;
-  /* border: 3px solid skyblue; */
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-bottom: 40px;
+  /* border: 2px solid lime; */
 }
 
 .mode-button-container > button {
-  background-color: #00a88c;
+  background-color: #12685d;
   color: white;
-  border: 2px solid #028670;
-  border-radius: 2px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
   font-size: 14px;
-  margin-left: 2px;
-  margin-right: 2px;
+  height: 40px;
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 .mode-button-container > button:hover {
   cursor: pointer;
-  background-color: #005e50;
+  background-color: #192e31;
 }
 
 .active-mode {
-  background-color: #005e50 !important;
-  border: 2px solid #005e50 !important;
+  background-color: #192e31 !important;
 }
 
-.form {
-  border: 3px solid magenta;
+.form-container {
   width: 100%;
 }
 
 .input-container {
-  border: 2px solid yellow;
   height: 40px;
   width: 100%;
   display: flex;
@@ -70,35 +99,46 @@ code {
   margin-bottom: 20px;
 }
 
+.input-radios {
+  width: 50%;
+  padding-right: 2%;
+}
+
+.input-radio-option {
+  margin-bottom: 10px;
+}
+
 #compounding-period-container {
-  display: inline-block;
   height: auto !important;
 }
 
 #payment-period-container {
-  display: inline-block;
   height: auto !important;
 }
 
 #payment-timing-container {
-  display: inline-block;
   height: auto !important;
 }
 
 .input-labels {
-  border: 2px solid grey;
-  text-align: center;
-  
+  color: #020908;
+  display: flex;
+  align-items: start;
+  padding-left: 2%;
+  font-size: 16px;
+  font-weight: bold;
+
 }
+
 .input-fields {
   border: 2px solid #b1b1b1;
+  margin-right: 2%;
   border-radius: 6px;
   width: 50%;
 }
 
 .submit-button-container {
   margin-top: 20px;
-  border: 3px solid green;
   width: 100%;
   height: 50px;
   text-align: center;
@@ -107,7 +147,7 @@ code {
 #submit-button {
   color: white;
   border: none;
-  background-color: #00a88c;
+  background-color: #244247;
   width: 50%;
   height: 100%;
   border-radius: 8px;

@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 function Layout() {
     return (
         <>
-            <h1>Financial Calculator</h1>
             <div className="navigation-bar">
-                <NavLink to="/simple-interest">
+                <h1 className="navigation-title">Financial Calculator</h1>
+                <NavLink to="/simple-interest" className="navigation-button">
                     <h6>Simple Interest</h6>
                 </NavLink>
                 <NavLink to="/compounding-interest">
@@ -17,7 +17,7 @@ function Layout() {
                 </NavLink>
                 <NavLink to="/gradient-series-cash-flow">
                     <h6>Gradient Series Cash Flow</h6>
-            </NavLink>
+                </NavLink>
             </div>
 
             <div className="wrapper">

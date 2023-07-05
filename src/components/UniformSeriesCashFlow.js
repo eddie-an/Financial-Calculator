@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function UniformSeriesCashFlow() {
+function UniformSeriesCashFlow({ RadioButton }) {
     const [ interestRate, setInterestRate ] = useState(0);
     const [ timePeriod, setTimePeriod ] = useState(0);
     const [ principal, setPrincipal ] = useState(0);
@@ -213,16 +213,17 @@ function UniformSeriesCashFlow() {
 
     return (
         <>
-            <h4>This is uniform series cash flow</h4>
-
-            <p>Calculate: </p>
+            <div className="title-container">
+                <p className="title">Uniform Series Cash Flow Calculator</p>
+                <p className="mode-prompt">Choose one of the following to calculate:</p>
+            </div>
             <div className="mode-button-container">
                 <button className="mode-buttons active-mode" id="cash-flow-given-principal-mode-button" onClick={()=>switchMode("cashFlowGivenPrincipal")}>Cash Flow Given Principal</button>
                 <button className="mode-buttons" id="cash-flow-given-future-value-mode-button" onClick={()=>switchMode("cashFlowGivenFutureValue")}>Cash Flow Given Future Value</button>
                 <button className="mode-buttons" id="principal-mode-button" onClick={()=>switchMode("principal")}>Principal</button>
                 <button className="mode-buttons" id="future-value-mode-button" onClick={()=>switchMode("futureValue")}>Future Value</button>
             </div>
-            <div className="form">
+            <div className="form-container">
             <form onSubmit={ (e) => handleSubmit(e) }>
                 <div className="input-container" id="principal-container">
                     <label htmlFor="principal-field" className="input-labels" id="principal-label">Principal</label>
@@ -234,24 +235,17 @@ function UniformSeriesCashFlow() {
                 </div>
                 <div className="input-container" id="compounding-period-container">
                     <p className="input-labels" id="compounding-period-label">Compounding Period</p>
-                    <input type="radio" id="compounding-annually" name="compounding-period" onClick={()=> setCompoundingPeriod("annually")} required></input>
-                    <label htmlFor="compounding-annually">Annually</label>
-                    <input type="radio" id="compounding-semi-annually" name="compounding-period" onClick={()=> setCompoundingPeriod("semi-annually")} required></input>
-                    <label htmlFor="compounding-semi-annually">Semi-Annually</label>
-                    <input type="radio" id="compounding-quarterly" name="compounding-period" onClick={()=> setCompoundingPeriod("quarterly")} required></input>
-                    <label htmlFor="compounding-quarterly">Quarterly</label>
-                    <input type="radio" id="compounding-monthly" name="compounding-period" onClick={()=> setCompoundingPeriod("monthly")} required></input>
-                    <label htmlFor="compounding-monthly">Monthly</label>
-                    <input type="radio" id="compounding-semi-monthly" name="compounding-period" onClick={()=> setCompoundingPeriod("semi-monthly")} required></input>
-                    <label htmlFor="compounding-semi-monthly">Semi-Monthly</label>
-                    <input type="radio" id="compounding-bi-weekly" name="compounding-period" onClick={()=> setCompoundingPeriod("bi-weekly")} required></input>
-                    <label htmlFor="compounding-bi-weekly">Bi-Weekly</label>
-                    <input type="radio" id="compounding-weekly" name="compounding-period" onClick={()=> setCompoundingPeriod("weekly")} required></input>
-                    <label htmlFor="compounding-weekly">Weekly</label>
-                    <input type="radio" id="compounding-daily" name="compounding-period" onClick={()=> setCompoundingPeriod("daily")} required></input>
-                    <label htmlFor="compounding-daily">Daily</label>
-                    <input type="radio" id="compounding-continuously" name="compounding-period" onClick={()=> setCompoundingPeriod("continuously")} required></input>
-                    <label htmlFor="compounding-continuously">Continuously</label>
+                    <div className="input-radios">
+                        <RadioButton labelTitle="Annually" id="compounding-annually" name="compounding-period" onClick={()=> setCompoundingPeriod("annually")}/>
+                        <RadioButton labelTitle="Semi-Annually" id="compounding-semi-annually" name="compounding-period" onClick={()=> setCompoundingPeriod("semi-annually")}/>
+                        <RadioButton labelTitle="Quarterly" id="compounding-quarterly" name="compounding-period" onClick={()=> setCompoundingPeriod("quarterly")}/>
+                        <RadioButton labelTitle="Monthly" id="compounding-monthly" name="compounding-period" onClick={()=> setCompoundingPeriod("monthly")}/>
+                        <RadioButton labelTitle="Semi-Monthly" id="compounding-semi-monthly" name="compounding-period" onClick={()=> setCompoundingPeriod("semi-monthly")}/>
+                        <RadioButton labelTitle="Bi-Weekly" id="compounding-bi-weekly" name="compounding-period" onClick={()=> setCompoundingPeriod("bi-weekly")}/>
+                        <RadioButton labelTitle="Weekly" id="compounding-weekly" name="compounding-period" onClick={()=> setCompoundingPeriod("weekly")}/>
+                        <RadioButton labelTitle="Daily" id="compounding-daily" name="compounding-period" onClick={()=> setCompoundingPeriod("daily")}/>
+                        <RadioButton labelTitle="Continuously" id="compounding-continuously" name="compounding-period" onClick={()=> setCompoundingPeriod("continuously")}/>
+                    </div>
                 </div>
                 <div className="input-container" id="time-period-container">
                     <label htmlFor="time-period-field" className="input-labels" id="time-period-label">Time Period (years)</label>
@@ -263,29 +257,23 @@ function UniformSeriesCashFlow() {
                 </div>
                 <div className="input-container" id="payment-period-container">
                     <p className="input-labels" id="payment-period-label">Payment/Deposit Period</p>
-                    <input type="radio" id="paid-annually" name="payment-period" onClick={()=> setPaymentPeriod("annually")} required></input>
-                    <label htmlFor="paid-annually">Annually</label>
-                    <input type="radio" id="paid-semi-annually" name="payment-period" onClick={()=> setPaymentPeriod("semi-annually")} required></input>
-                    <label htmlFor="paid-semi-annually">Semi-Annually</label>
-                    <input type="radio" id="paid-quarterly" name="payment-period" onClick={()=> setPaymentPeriod("quarterly")} required></input>
-                    <label htmlFor="paid-quarterly">Quarterly</label>
-                    <input type="radio" id="paid-monthly" name="payment-period" onClick={()=> setPaymentPeriod("monthly")} required></input>
-                    <label htmlFor="paid-monthly">Monthly</label>
-                    <input type="radio" id="paid-semi-monthly" name="payment-period" onClick={()=> setPaymentPeriod("semi-monthly")} required></input>
-                    <label htmlFor="paid-semi-monthly">Semi-Monthly</label>
-                    <input type="radio" id="paid-bi-weekly" name="payment-period" onClick={()=> setPaymentPeriod("bi-weekly")} required></input>
-                    <label htmlFor="paid-bi-weekly">Bi-Weekly</label>
-                    <input type="radio" id="paid-weekly" name="payment-period" onClick={()=> setPaymentPeriod("weekly")} required></input>
-                    <label htmlFor="paid-weekly">Weekly</label>
-                    <input type="radio" id="paid-daily" name="payment-period" onClick={()=> setPaymentPeriod("daily")} required></input>
-                    <label htmlFor="paid-daily">Daily</label>
+                    <div className="input-radios">                 
+                        <RadioButton labelTitle="Annually" id="paid-annually" name="payment-period" onClick={()=> setPaymentPeriod("annually")}/>
+                        <RadioButton labelTitle="Semi-Annually" id="paid-semi-annually" name="payment-period" onClick={()=> setPaymentPeriod("semi-annually")}/>
+                        <RadioButton labelTitle="Quarterly" id="paid-quarterly" name="payment-period" onClick={()=> setPaymentPeriod("quarterly")}/>
+                        <RadioButton labelTitle="Monthly" id="paid-monthly" name="payment-period" onClick={()=> setPaymentPeriod("monthly")}/>
+                        <RadioButton labelTitle="Semi-Monthly" id="paid-semi-monthly" name="payment-period" onClick={()=> setPaymentPeriod("semi-monthly")}/>
+                        <RadioButton labelTitle="Bi-Weekly" id="paid-bi-weekly" name="payment-period" onClick={()=> setPaymentPeriod("bi-weekly")}/>
+                        <RadioButton labelTitle="Weekly" id="paid-weekly" name="payment-period" onClick={()=> setPaymentPeriod("weekly")}/>
+                        <RadioButton labelTitle="Daily" id="paid-daily" name="payment-period" onClick={()=> setPaymentPeriod("daily")}/>
+                    </div>
                 </div>
                 <div className="input-container" id="payment-timing-container">
                     <p className="input-labels" id="payment-timing-label">Paid/Deposited at the</p>
-                    <input type="radio" id="paid-at-beginning" name="payment-timing" onClick={()=> setEndOfPeriodPay(false)} required></input>
-                    <label htmlFor="paid-at-beginning">Beginning of each period</label>
-                    <input type="radio" id="paid-at-end" name="payment-timing" onClick={()=> setEndOfPeriodPay(true)} required></input>
-                    <label htmlFor="paid-at-end">End of each period</label>
+                    <div className="input-radios">
+                        <RadioButton labelTitle="Beginning of each period" id="paid-at-beginning" name="payment-timing" onClick={()=> setEndOfPeriodPay(false)}/>
+                        <RadioButton labelTitle="End of each period" id="paid-at-end" name="payment-timing" onClick={()=> setEndOfPeriodPay(true)}/>
+                    </div>
                 </div>
                 <div className="input-container hidden" id="future-value-container">
                     <label htmlFor="future-value-field" className="input-labels" id="future-value-label">Future Value</label>
@@ -297,7 +285,7 @@ function UniformSeriesCashFlow() {
             </form>
             </div>
 
-            <div className="answer">
+            <div className="answer-container">
                 <h3>{answer}</h3>
             </div>
         </>

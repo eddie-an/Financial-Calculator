@@ -122,18 +122,18 @@ function SimpleInterest() {
 
     return (
         <>
-            <h4>This is simple interest</h4>
-
-            <p>Calculate: </p>
+            <div className="title-container">
+                <p className="title">Simple Interest Calculator</p>
+                <p className="mode-prompt">Choose one of the following to calculate:</p>
+            </div>
             <div className="mode-button-container">
                 <button className="mode-buttons" id="principal-mode-button" onClick={()=>switchMode("principal")}>Principal</button>
                 <button className="mode-buttons" id="interest-rate-mode-button" onClick={()=>switchMode("interestRate")}>Interest Rate</button>
                 <button className="mode-buttons" id="time-period-mode-button" onClick={()=>switchMode("timePeriod")}>Time Period</button>
                 <button className="mode-buttons active-mode" id="future-value-mode-button" onClick={()=>switchMode("futureValue")}>Future Value</button>
             </div>
-            <div className="form">
+            <div className="form-container">
             <form onSubmit={ (e) => handleSubmit(e) }>
-                <br/>
                 <div className="input-container" id="principal-container">
                     <label htmlFor="principal-field" className="input-labels" id="principal-label">Principal</label>
                     <input type="number" className="input-fields" id="principal-field" onChange={handlePrincipal} min='0' step="0.01" required/>
@@ -156,7 +156,7 @@ function SimpleInterest() {
             </form>
             </div>
 
-            <div className="answer">
+            <div className="answer-container">
                 <h3>{answer}</h3>
             </div>
 

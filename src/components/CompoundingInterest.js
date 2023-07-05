@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function CompoundingInterest() {
+function CompoundingInterest({ RadioButton }) {
     const [ interestRate, setInterestRate ] = useState(0);
     const [ timePeriod, setTimePeriod ] = useState(0);
     const [ principal, setPrincipal ] = useState(0);
@@ -156,9 +156,10 @@ function CompoundingInterest() {
 
     return (
         <>
-            <h4>This is compounding interest</h4>
-
-            <p>Calculate: </p>
+            <div className="title-container">
+                <p className="title">Compounding Interest Calculator</p>
+                <p className="mode-prompt">Choose one of the following to calculate:</p>
+            </div>
             <div className="mode-button-container">
                 <button className="mode-buttons" id="principal-mode-button" onClick={()=>switchMode("principal")}>Principal</button>
                 <button className="mode-buttons" id="interest-rate-mode-button" onClick={()=>switchMode("interestRate")}>Annual Percentage Rate</button>
@@ -166,7 +167,7 @@ function CompoundingInterest() {
                 <button className="mode-buttons active-mode" id="future-value-mode-button" onClick={()=>switchMode("futureValue")}>Future Value</button>
             </div>
 
-            <div className="form">
+            <div className="form-container">
                 <form onSubmit={ (e) => handleSubmit(e) }>
                     <div className="input-container" id="principal-container">
                         <label htmlFor="principal-field" className="input-labels" id="principal-label">Principal</label>
@@ -178,24 +179,17 @@ function CompoundingInterest() {
                     </div>
                     <div className="input-container" id="compounding-period-container">
                         <p className="input-labels" id="compounding-period-label">Compounding Period</p>
-                        <input type="radio" id="compounding-annually" name="compounding-period" onClick={()=> setCompoundingPeriod("annually")} required></input>
-                        <label htmlFor="compounding-annually">Annually</label>
-                        <input type="radio" id="compounding-semi-annually" name="compounding-period" onClick={()=> setCompoundingPeriod("semi-annually")} required></input>
-                        <label htmlFor="compounding-semi-annually">Semi-Annually</label>
-                        <input type="radio" id="compounding-quarterly" name="compounding-period" onClick={()=> setCompoundingPeriod("quarterly")} required></input>
-                        <label htmlFor="compounding-quarterly">Quarterly</label>
-                        <input type="radio" id="compounding-monthly" name="compounding-period" onClick={()=> setCompoundingPeriod("monthly")} required></input>
-                        <label htmlFor="compounding-monthly">Monthly</label>
-                        <input type="radio" id="compounding-semi-monthly" name="compounding-period" onClick={()=> setCompoundingPeriod("semi-monthly")} required></input>
-                        <label htmlFor="compounding-semi-monthly">Semi-Monthly</label>
-                        <input type="radio" id="compounding-bi-weekly" name="compounding-period" onClick={()=> setCompoundingPeriod("bi-weekly")} required></input>
-                        <label htmlFor="compounding-bi-weekly">Bi-Weekly</label>
-                        <input type="radio" id="compounding-weekly" name="compounding-period" onClick={()=> setCompoundingPeriod("weekly")} required></input>
-                        <label htmlFor="compounding-weekly">Weekly</label>
-                        <input type="radio" id="compounding-daily" name="compounding-period" onClick={()=> setCompoundingPeriod("daily")} required></input>
-                        <label htmlFor="compounding-daily">Daily</label>
-                        <input type="radio" id="compounding-continuously" name="compounding-period" onClick={()=> setCompoundingPeriod("continuously")} required></input>
-                        <label htmlFor="compounding-continuously">Continuously</label>
+                        <div className="input-radios">
+                            <RadioButton labelTitle="Annually" id="compounding-annually" name="compounding-period" onClick={()=> setCompoundingPeriod("annually")}/>
+                            <RadioButton labelTitle="Semi-Annually" id="compounding-semi-annually" name="compounding-period" onClick={()=> setCompoundingPeriod("semi-annually")}/>
+                            <RadioButton labelTitle="Quarterly" id="compounding-quarterly" name="compounding-period" onClick={()=> setCompoundingPeriod("quarterly")}/>
+                            <RadioButton labelTitle="Monthly" id="compounding-monthly" name="compounding-period" onClick={()=> setCompoundingPeriod("monthly")}/>
+                            <RadioButton labelTitle="Semi-Monthly" id="compounding-semi-monthly" name="compounding-period" onClick={()=> setCompoundingPeriod("semi-monthly")}/>
+                            <RadioButton labelTitle="Bi-Weekly" id="compounding-bi-weekly" name="compounding-period" onClick={()=> setCompoundingPeriod("bi-weekly")}/>
+                            <RadioButton labelTitle="Weekly" id="compounding-weekly" name="compounding-period" onClick={()=> setCompoundingPeriod("weekly")}/>
+                            <RadioButton labelTitle="Daily" id="compounding-daily" name="compounding-period" onClick={()=> setCompoundingPeriod("daily")}/>
+                            <RadioButton labelTitle="Continuously" id="compounding-continuously" name="compounding-period" onClick={()=> setCompoundingPeriod("continuously")}/>
+                        </div>
                     </div>
                     <div className="input-container" id="time-period-container">
                         <label htmlFor="time-period-field" className="input-labels" id="time-period-label">Time Period (years)</label>
@@ -211,7 +205,7 @@ function CompoundingInterest() {
                 </form>
             </div>
 
-            <div className="answer">
+            <div className="answer-container">
                 <h3>{answer}</h3>
             </div>
         </>

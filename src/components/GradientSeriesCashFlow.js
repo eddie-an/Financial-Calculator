@@ -1,4 +1,4 @@
-function GradientSeriesCashFlow() {
+function GradientSeriesCashFlow({ RadioButton }) {
     return (
         <>
             <h4>This is gradient series cash flow</h4>
