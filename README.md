@@ -17,7 +17,22 @@ F = P(1 + in)
 ```
 
 where\
-$`F`$ = Future Value\
+$`F`$ = Future value\
 $`P`$ = Principal\
-$`i`$ = Interest Rate\
-$`n`$ = Number of Year
+$`i`$ = Interest rate\
+$`n`$ = Number of years
+
+#### Compounding interest Calculations
+
+To calculate compounding interest rate, the following formula and its variation was used
+
+```math
+F = P(1 + (r/n))^(n*t)
+```
+
+where\
+$`F`$ = Future value\
+$`P`$ = Principal\
+$`r`$ = Annual percentage rate\
+$`n`$ = Number of times interest compounded in a year
+$`t`$ = Number of years
