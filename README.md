@@ -18,6 +18,6 @@ F = P(1 + in)
 
 where\
 $`F`$ = Future Value\
-$P$ = Principal\
-$i$ = Interest Rate\
-$n$ = Number of Year
+$`P`$ = Principal\
+$`i`$ = Interest Rate\
+$`n`$ = Number of Year
