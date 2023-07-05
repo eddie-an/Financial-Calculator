@@ -14,9 +14,10 @@ To calculate simple interest rate, the following formula and its variation was u
 
 ```math
 F = P(1 + in)
-
-where   F = Future Value
-        P = Principal
-        i = Interest Rate
-        n = Number of Years
 ```
+
+where\
+$F$ = Future Value\
+$P$ = Principal\
+$i$ = Interest Rate\
+$n$ = Number of Year
