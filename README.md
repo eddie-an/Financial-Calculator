@@ -17,7 +17,7 @@ F = P(1 + in)
 ```
 
 where\
-$F$ = Future Value\
+$`F`$ = Future Value\
 $P$ = Principal\
 $i$ = Interest Rate\
 $n$ = Number of Year
