@@ -1,7 +1,10 @@
 function GradientSeriesCashFlow({ RadioButton }) {
     return (
         <>
-            <h4>This is gradient series cash flow</h4>
+            <div className="title-container">
+                <p className="title">Gradient Series Cash Flow Calculator</p>
+                <p className="mode-prompt">Choose one of the following to calculate:</p>
+            </div>
         </>
 
     );

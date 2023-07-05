@@ -5,18 +5,28 @@ function Layout() {
     return (
         <>
             <div className="navigation-bar">
-                <h1 className="navigation-title">Financial Calculator</h1>
-                <NavLink to="/simple-interest" className="navigation-button">
-                    <h6>Simple Interest</h6>
+                <div className="navigation-title-container">
+                    <h1>Financial Calculator</h1>
+                </div>
+                <NavLink to="/simple-interest" >
+                    <div className="navigation-button-container">
+                        <p>Simple Interest</p>
+                    </div>
                 </NavLink>
                 <NavLink to="/compounding-interest">
-                    <h6>Compounding Interest</h6>
+                    <div className="navigation-button-container">
+                        <p>Compounding Interest</p>
+                    </div>
                 </NavLink>
                 <NavLink to="/uniform-series-cash-flow">
-                    <h6>Uniform Series Cash Flow</h6>
+                    <div className="navigation-button-container">
+                        <p>Uniform Series Cash Flow</p>
+                    </div>
                 </NavLink>
                 <NavLink to="/gradient-series-cash-flow">
-                    <h6>Gradient Series Cash Flow</h6>
+                        <div className="navigation-button-container">
+                        <p>Gradient Series Cash Flow</p>
+                    </div>
                 </NavLink>
             </div>
 

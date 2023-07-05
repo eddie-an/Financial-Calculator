@@ -29,6 +29,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout/>}>
+            <Route path="/" element={<SimpleInterest/>}/>
             <Route path="/simple-interest" element={<SimpleInterest/>}/>
             <Route path="/compounding-interest" element={<CompoundingInterest RadioButton={RadioButton}/>}/>
             <Route path="/uniform-series-cash-flow" element={<UniformSeriesCashFlow RadioButton={RadioButton}/>}/>

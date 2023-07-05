@@ -34,13 +34,41 @@ code {
   border-bottom: 3px solid #192e31;
 }
 
+.navigation-title-container > h1 {
+  color: #192e31;
+}
+
+.navigation-button-container {
+  color: #192e31;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navigation-button-container:hover {
+  color: #020908;
+}
+
+.active > .navigation-button-container {
+  color: #020908;
+}
+
+a:link { text-decoration: none; }
+
+a:visited { text-decoration: none; }
+
+a:hover { text-decoration: none; }
+
+a:active { text-decoration: none; }
+
+
+
 .title-container {
   text-align: center;
 }
 
-.navigation-title {
-  color: #192e31;
-}
+
 
 .title {
   font-size: 24px;
@@ -68,6 +96,7 @@ code {
 
 .mode-button-container > button {
   background-color: #12685d;
+  box-shadow: 2px 2px 2px #192e31;
   color: white;
   font-weight: 600;
   border: none;
@@ -96,7 +125,7 @@ code {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .input-radios {
@@ -106,6 +135,12 @@ code {
 
 .input-radio-option {
   margin-bottom: 10px;
+  color: #192e31;
+  font-weight: 500;
+}
+
+.input-radio-option > input:checked {
+  color: red;
 }
 
 #compounding-period-container {
@@ -131,10 +166,17 @@ code {
 }
 
 .input-fields {
-  border: 2px solid #b1b1b1;
+  border: none;
   margin-right: 2%;
   border-radius: 6px;
   width: 50%;
+  background-color: #f3f7fc;
+  box-shadow: inset -4px -4px 6px 0 hsla(0, 0%, 100%, 0.522), inset 4px 4px 5px 0 rgba(67, 82, 104, 0.2);
+}
+
+.input-fields:focus {
+  outline: none;
+  color: #192e31;
 }
 
 .submit-button-container {
@@ -148,6 +190,7 @@ code {
   color: white;
   border: none;
   background-color: #244247;
+  box-shadow: 2px 2px 3px #000000;
   width: 50%;
   height: 100%;
   border-radius: 8px;
