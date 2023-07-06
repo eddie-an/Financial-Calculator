@@ -6,6 +6,7 @@ function CompoundingInterest({ RadioButton }) {
     const [ principal, setPrincipal ] = useState(0);
     const [ futureValue, setFutureValue ] = useState(0);
     const [ compoundingPeriod, setCompoundingPeriod] = useState("");
+    const [ showEarEpr, setShowEarEpr ] = useState(false);
     const [ answer, setAnswer ] = useState(0);
     const [ mode, setMode ] = useState("futureValue");
 

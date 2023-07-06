@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SimpleInterest from "./components/SimpleInterest";
 import CompoundingInterest from "./components/CompoundingInterest";
 import UniformSeriesCashFlow from "./components/UniformSeriesCashFlow";
-import GradientSeriesCashFlow from "./components/GradientSeriesCashFlow";
 import Layout from "./components/Layout";
 
 /**
@@ -33,7 +32,6 @@ function App() {
             <Route path="/simple-interest" element={<SimpleInterest/>}/>
             <Route path="/compounding-interest" element={<CompoundingInterest RadioButton={RadioButton}/>}/>
             <Route path="/uniform-series-cash-flow" element={<UniformSeriesCashFlow RadioButton={RadioButton}/>}/>
-            <Route path="/gradient-series-cash-flow" element={<GradientSeriesCashFlow RadioButton={RadioButton}/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

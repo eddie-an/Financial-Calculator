@@ -1,30 +1,31 @@
-body {
-  margin: 0;
+* {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f6fdfd;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-
 
 .hidden {
   display: none !important;
 }
 
-
-.wrapper {
-  margin-inline: auto;
-  width: 700px;
-  padding-top: 20px;
+html {
+  width: 100%;
+  min-height: 100vh;
 }
+
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f6fdfd;
+}
+
+.main { /* Container that encloses the navigation bar and main content area*/
+  min-height: calc(100vh - 2.72em); /* -2.72em to leave space for navigation bar*/
+}
+
 
 .navigation-bar {
   display: flex;
@@ -54,7 +55,7 @@ code {
   color: #020908;
 }
 
-a:link { text-decoration: none; }
+a:link { text-decoration: none; } /* Disable all link underlines */
 
 a:visited { text-decoration: none; }
 
@@ -62,19 +63,21 @@ a:hover { text-decoration: none; }
 
 a:active { text-decoration: none; }
 
-
-
-.title-container {
-  text-align: center;
+.wrapper { /* the main content div */
+  margin-inline: auto;
+  width: 700px;
+  padding-top: 20px;
+  padding-bottom: 50px;
 }
 
-
+.title-container { /* title container right below navigation bar*/
+  text-align: center;
+}
 
 .title {
   font-size: 24px;
   font-weight: bold;
   color: #167e70;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .mode-prompt {
@@ -82,7 +85,6 @@ a:active { text-decoration: none; }
   font-weight: 600;
   font-style: oblique;
   color: #020908;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .mode-button-container {
@@ -139,10 +141,6 @@ a:active { text-decoration: none; }
   font-weight: 500;
 }
 
-.input-radio-option > input:checked {
-  color: red;
-}
-
 #compounding-period-container {
   height: auto !important;
 }
@@ -162,7 +160,6 @@ a:active { text-decoration: none; }
   padding-left: 2%;
   font-size: 16px;
   font-weight: bold;
-
 }
 
 .input-fields {
@@ -195,8 +192,19 @@ a:active { text-decoration: none; }
   height: 100%;
   border-radius: 8px;
   font-size: 20px;
+  font-weight: bold;
 }
 
 #submit-button:hover {
   cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  color: #020908;
+  font-weight: bold;
+  font-size: 12px;
+  border-top: 2px solid #020908;
+  background-color: #244247;
+  height: 3.5em;
 }

@@ -27,7 +27,7 @@ $`n`$ = Number of years
 To calculate compounding interest rate, the following formula and its variation was used
 
 ```math
-F = P({1 + r} \over n)^nt
+F = {P({1 + r} \over {n})}^nt
 ```
 
 where\
