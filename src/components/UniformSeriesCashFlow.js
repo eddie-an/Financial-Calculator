@@ -292,17 +292,17 @@ function UniformSeriesCashFlow({ RadioButton }) {
             <div id="answer-container" className="hidden">
                 {
                     mode === "cashFlowGivenPrincipal" | mode === "cashFlowGivenFutureValue" ?
-                    <h3>The cash flow is ${answer}</h3> :
+                    <h3>The cash flow is ${answer}.</h3> :
                     <></>
                 }
                 {
                     mode === "futureValue" ?
-                    <h3>The future value will be ${answer}</h3> :
+                    <h3>The future value will be ${answer}.</h3> :
                     <></>
                 }
                 {
                     mode === "principal" ?
-                    <h3>The principal is ${answer}</h3> :
+                    <h3>The principal is ${answer}.</h3> :
                     <></>
                 }
             </div>
