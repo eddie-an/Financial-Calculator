@@ -1,7 +1,7 @@
 ## Description
 
 A front end web development project. This website performs financial calculations.
-###### Still a work in progress
+###### Still a work in progress (Mobile support needs to be implemented)
 
 ### Inspiration
 
@@ -23,6 +23,8 @@ $`P`$ = Principal\
 $`i`$ = Interest rate\
 $`n`$ = Number of years
 
+---
+
 ### Compounding Interest Calculations
 
 To calculate compounding interest rate, the following formula was used.
@@ -37,6 +39,8 @@ $`P`$ = Principal\
 $`r`$ = Annual percentage rate\
 $`n`$ = Number of times interest compounded in a year\
 $`t`$ = Number of years
+
+---
 
 ### Uniform Series Cash Flow Calcuations
 
