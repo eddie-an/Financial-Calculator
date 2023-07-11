@@ -83,7 +83,7 @@ For uniform series cash flow calculations, payments/deposits can occur at the be
 #### Uniform Series Present Worth Factor 
 ##### End of each payment/deposit period:
 ```math
-P = A({{{{(1+i)}^{n}} - 1 } \over {i{(1 + i)}^{n}}})
+P = A{{{{(1+i)}^{n}} - 1 } \over {i{(1 + i)}^{n}}}
 ```
 
 where\
@@ -94,7 +94,7 @@ $`n`$ = Total number of payments
 
 ##### Beginning of each payment/deposit period:
 ```math
-P = A({{{{(1+i)}^{(n - 1)}} - 1 + i{(1+i)}^{(n - 1)}} \over {i{(1 + i)}^{(n - 1)}}})
+P = A{{{{(1+i)}^{(n - 1)}} - 1 + i{(1+i)}^{(n - 1)}} \over {i{(1 + i)}^{(n - 1)}}}
 ```
 
 where\
@@ -107,7 +107,7 @@ $`n`$ = Total number of payments
 
 ##### End of each payment/deposit period:
 ```math
-A = P({{i{(1 + i)}^{n}} \over {{{(1+i)}^{n}} - 1 }})
+A = P{{i{(1 + i)}^{n}} \over {{{(1+i)}^{n}} - 1 }}
 ```
 
 where\
@@ -119,7 +119,7 @@ $`n`$ = Total number of payments
 
 ##### Beginning of each payment/deposit period:
 ```math
-A = P({{i{(1 + i)}^{(n - 1)}} \over {{{(1+i)}^{(n - 1)}} - 1 + i{(1+i)}^{(n - 1)}}})
+A = P{{i{(1 + i)}^{(n - 1)}} \over {{{(1+i)}^{(n - 1)}} - 1 + i{(1+i)}^{(n - 1)}}}
 ```
 
 where\
@@ -132,7 +132,7 @@ $`n`$ = Total number of payments
 
 ##### End of each payment/deposit period:
 ```math
-F = A({{{{(1+i)}^{n}} - 1 } \over {i}})
+F = A{{{{(1+i)}^{n}} - 1 } \over {i}}
 ```
 
 where\
@@ -143,11 +143,36 @@ $`n`$ = Total number of payments
 
 ##### Beginning of each payment/deposit period:
 ```math
-F = A({{{{(1+i)}^{(n - 1)}} - 1 + i{(1+i)}^{(n - 1)}} \over {i}})
+F = A{{{{(1+i)}^{(n - 1)}} - 1 + i{(1+i)}^{(n - 1)}} \over {i}}
 ```
 
 where\
 $`F`$ = Future Value\
 $`A`$ = Cash Flow in each payment/deposit period\
+$`i`$ = Effective Periodic Rate\
+$`n`$ = Total number of payments
+
+#### Uniform Series Sinking Fund Factor
+
+##### End of each payment/deposit period:
+```math
+A = F{{i} \over {{{(1+i)}^{n}} - 1 }}
+```
+
+where\
+$`A`$ = Cash Flow in each payment/deposit period\
+$`F`$ = Future Value\
+$`i`$ = Effective Periodic Rate\
+$`n`$ = Total number of payments
+
+
+##### Beginning of each payment/deposit period:
+```math
+A = F{{i} \over {{{(1+i)}^{(n - 1)}} - 1 + i{(1+i)}^{(n - 1)}}}
+```
+
+where\
+$`A`$ = Cash Flow in each payment/deposit period\
+$`F`$ = Future Value\
 $`i`$ = Effective Periodic Rate\
 $`n`$ = Total number of payments
