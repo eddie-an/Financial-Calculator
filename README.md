@@ -83,7 +83,7 @@ For uniform series cash flow calculations, payments/deposits can occur at the be
 
 Uniform Series Present Worth Factor (End of each payment/deposit period):
 ```math
-P = A{({{{(1+i)}^{n}} - 1 } \over {i{(1 + i)}^n})}
+P = A({{{{(1+i)}^{n}} - 1 } \over {i{(1 + i)}^n}})
 ```
 
 where\
