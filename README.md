@@ -8,7 +8,7 @@ After taking a course on engineering economics, I learned about microeconomic & 
 
 ### Math Equations Used:
 
-#### Simple interest Calculations
+#### Simple Interest Calculations
 
 To calculate simple interest rate, the following formula and its variation was used
 
@@ -22,9 +22,9 @@ $`P`$ = Principal\
 $`i`$ = Interest rate\
 $`n`$ = Number of years
 
-#### Compounding interest Calculations
+#### Compounding Interest Calculations
 
-To calculate compounding interest rate, the following formula and its variation was used
+To calculate compounding interest rate, the following formula was used.
 
 ```math
 F = {P({1 + {r \over n}})}^{nt}
@@ -34,5 +34,45 @@ where\
 $`F`$ = Future value\
 $`P`$ = Principal\
 $`r`$ = Annual percentage rate\
-$`n`$ = Number of times interest compounded in a year
+$`n`$ = Number of times interest compounded in a year\
 $`t`$ = Number of years
+
+#### Uniform Series Cash Flow Calcuations
+
+To perform the uniform series cash flow calculations, the effective annual rate (EAR) is first calculated. Unlike the annual percentage rate (APR), the EAR accounts for any interest rate that compounds more than once a year.
+
+<br>
+
+Generally, this is the effective annual rate formula:
+```math
+EAR = (1 + {APR \over m})^{m} - 1
+```
+
+where\
+$`EAR`$ = Effective Annual Rate\
+$`APR`$ = Annual Percentage Rate\
+$`m`$ = Number of times APR compounded in a year\
+
+For continuous compounding, this is the effective annual rate formula:
+
+```math
+EAR = e^{r} - 1
+```
+
+where\
+$`EAR`$ = Effective Annual Rate\
+$`r`$ = Annual Percentage Rate\
+
+For example, a 3% APR that is compounded monthly is equivalent to a monthly interest rate of `0.25%`. `($`3 / 12 = 0.25`$)`. Because it is compounded monthly, the 3% APR actually becomes 3.0416% EAR when interest on interest is accounted for.
+
+Now that the effective annual rate (EAR) has been calculated, the amount of principal is ACTUALLY paid as interest every year is properly reflected. Then, the effective periodic rate (EPR) is be calculated. Sometimes the interest compounding period differs from the payment period. A good example is mortgages in Canada. Typically, the interest for mortgages are compounded semi-annually, whereas the payments are monthly. EPR is the interest rate for a given payment/deposit period. 
+
+```math
+EPR = (1 + EAR ) ^ {1 \over n} - 1
+```
+
+where\
+$`EPR`$ = Effective Periodic Rate\
+$`EAR`$ = Effective Annual Rate\
+$`n`$ = Number of payments in a year\
+
