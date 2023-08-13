@@ -26,17 +26,35 @@ body {
   min-height: calc(100vh - 2.72em); /* -2.72em to leave space for navigation bar*/
 }
 
+button:hover {
+  cursor: pointer;
+}
 
 .navigation-bar {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   background-color: #167e70;
   border-bottom: 3px solid #192e31;
+  min-height: 80px;
 }
 
+.navigation-title-container {
+  display:flex;
+  align-items: center;
+}
 .navigation-title-container > h1 {
   color: #192e31;
+}
+
+.navigation-menu-components {
+  display: flex;
+  flex-direction: row;
+}
+
+.navigation-menu-components > * {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .navigation-button-container {
@@ -53,6 +71,10 @@ body {
 
 .active > .navigation-button-container {
   color: #020908;
+}
+
+.navigation-hamburger-menu-container > *{
+  display: none;
 }
 
 a:link { text-decoration: none; } /* Disable all link underlines */
@@ -104,13 +126,12 @@ a:active { text-decoration: none; }
   border: none;
   border-radius: 8px;
   font-size: 14px;
-  height: 40px;
+  min-height: 40px;
   margin-left: 4px;
   margin-right: 4px;
 }
 
 .mode-button-container > button:hover {
-  cursor: pointer;
   background-color: #192e31;
 }
 
@@ -207,4 +228,117 @@ footer {
   border-top: 2px solid #020908;
   background-color: #244247;
   height: 3.5em;
+}
+
+@media only screen and (max-width: 950px) {
+  .navigation-button-container {
+    font-size: 14px;
+  }
+
+  .navigation-menu-components > * {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .navigation-title-container {
+    font-size: 14px;
+  }
+
+}
+
+@media only screen and (max-width: 820px) {
+  .navigation-button-container {
+    font-size: 12px;
+  }
+
+  .navigation-menu-components > * {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .navigation-title-container {
+    font-size: 12px;
+  }
+
+  .wrapper {
+    width: 85vw;
+  }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+  .navigation-hamburger-menu-container > *{
+    display:block;
+  } 
+
+  .navigation-menu-components {
+    display: none;
+  }
+
+}
+
+@media only screen and (max-width: 480px) {
+  .title {
+    font-size: 18px;
+  }
+
+  .mode-prompt {
+    font-size: 12px;
+  }
+
+  .mode-button-container > button {
+    font-size: 10px;
+  }
+
+  .input-labels {
+    font-size: 12px;
+  }
+
+  #submit-button {
+    font-size: 16px;
+  }
+
+  .input-radio-option > * {
+    font-size: 12px;
+  }
+
+  .navigation-title-container > * {
+    font-size: 20px;
+  }
+
+}
+
+.overlay-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-button-container > button {
+  background-color: transparent;
+  border: none;
+  color: #767676;
+  font-size: 30px;
+  font-weight: bold;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.hamburger-menu-button {
+  background-color: transparent;
+  border: none;
+  color: #192e31;
+  font-size: 36px;
+  font-weight: bold;
+  height: 100%;
+  width: 100%;
 }
