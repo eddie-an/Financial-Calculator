@@ -1,7 +1,6 @@
 ## Description
 
 A front end web development project. This website performs financial calculations.
-###### Still a work in progress (Mobile support needs to be implemented)
 
 ### Inspiration
 
