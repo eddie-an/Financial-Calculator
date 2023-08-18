@@ -115,7 +115,6 @@ a:active { text-decoration: none; }
   flex-direction: row;
   justify-content: center;
   margin-bottom: 40px;
-  /* border: 2px solid lime; */
 }
 
 .mode-button-container > button {
@@ -269,7 +268,7 @@ footer {
 @media only screen and (max-width: 700px) {
 
   .navigation-hamburger-menu-container > *{
-    display:block;
+    display: block;
   } 
 
   .navigation-menu-components {
@@ -322,10 +321,28 @@ footer {
   align-items: center;
 }
 
+.overlay-button-container {
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  color: #192e31;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.overlay-button-container:hover {
+  color: #167e70;
+}
+
+
+.active > .overlay-button-container {
+  color: #167e70;
+}
+
+
 .close-button-container > button {
   background-color: transparent;
   border: none;
-  color: #767676;
+  color: #192e31;
   font-size: 30px;
   font-weight: bold;
   position: fixed;
