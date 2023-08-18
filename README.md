@@ -2,7 +2,7 @@
 
 A front end web development project. This website performs financial calculations.
 
-Website link is (here)[https://a6efdd52.eddies-financial-calculator.pages.dev/].
+Website link is [here](https://a6efdd52.eddies-financial-calculator.pages.dev/).
 
 ### Inspiration
 
