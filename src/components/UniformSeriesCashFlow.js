@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 function UniformSeriesCashFlow({ RadioButton }) {
+
+    // The following state variables are used to calculate the final value and changes based on user input
     const [ interestRate, setInterestRate ] = useState(0);
     const [ timePeriod, setTimePeriod ] = useState(0);
     const [ principal, setPrincipal ] = useState(0);
@@ -9,8 +11,14 @@ function UniformSeriesCashFlow({ RadioButton }) {
     const [ compoundingPeriod, setCompoundingPeriod] = useState("");
     const [ paymentPeriod, setPaymentPeriod] = useState("");
     const [ endOfPeriodPay, setEndOfPeriodPay] = useState(); // true when payments are at the end of each period
+
+    // The following state varibles are used to store the calculation mode and the final numerical answer
     const [ answer, setAnswer ] = useState(0);
     const [ mode, setMode ] = useState("cashFlowGivenPrincipal");
+
+    // The following state variable 'paymentPeriodAnswer' is the exact same as the 'paymentPeriod' variable, except this is used to display the payment period on the screen.
+    // If 'paymentPeriod' was used instead of 'paymentPeriodAnswer', the answer changes in real time when the user clicks on the radio buttons instead of when the user clicks 'calculate'.
+    const [ paymentPeriodAnswer, setPaymentPeriodAnswer ] = useState("");
 
     const handleInterestRate = (event) => {
         setInterestRate(event.target.value);
@@ -116,6 +124,7 @@ function UniformSeriesCashFlow({ RadioButton }) {
         }
 
         setAnswer(ans.toFixed(2));
+        setPaymentPeriodAnswer(paymentPeriod);
     }
 
     /**
@@ -213,7 +222,7 @@ function UniformSeriesCashFlow({ RadioButton }) {
 
         const buttonToHighLight = document.getElementById(`${selectedButtonId}`);
         buttonToHighLight.classList.add("active-mode");
-    }
+    } 
 
     return (
         <>
@@ -292,7 +301,7 @@ function UniformSeriesCashFlow({ RadioButton }) {
             <div id="answer-container" className="hidden">
                 {
                     mode === "cashFlowGivenPrincipal" | mode === "cashFlowGivenFutureValue" ?
-                    <h3>The cash flow is ${answer}.</h3> :
+                    <h3>The cash flow is ${answer} when paid/deposited {paymentPeriodAnswer}.</h3> :
                     <></>
                 }
                 {
